@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hackathon Registration Form</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Hackathon Registration Form</h1>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <!-- FORM -->
+    <form id="multiStepForm">
+
+      <!-- STEP 1 -->
+      <div class="form-step active">
+
+        <h2>Step 1: Personal Information</h2>
+
+        <label>Full Name</label>
+        <input type="text" id="fullName" placeholder="Enter your name">
+
+        <label>Date of Birth</label>
+        <input type="date" id="dob">
+
+        <label>Gender</label>
+        <select id="gender">
+          <option value="">Select Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+
+        <button type="button" class="next-btn">
+          Next
+        </button>
+
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="form-step">
+
+        <h2>Step 2: Contact & Team Details</h2>
+
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter email">
+
+        <label>Phone Number</label>
+        <input type="text" id="phone" placeholder="Enter phone number">
+
+        <label>Team Name</label>
+        <input type="text" id="teamName" placeholder="Enter team name">
+
+        <label>Team Size</label>
+        <select id="teamSize">
+          <option value="">Select Team Size</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+
+        <label>Role in Team</label>
+        <select id="role">
+          <option value="">Select Role</option>
+          <option>Developer</option>
+          <option>Designer</option>
+          <option>Tester</option>
+          <option>Team Lead</option>
+        </select>
+
+        <div class="buttons">
+          <button type="button" class="prev-btn">
+            Previous
+          </button>
+
+          <button type="button" class="next-btn">
+            Next
+          </button>
+        </div>
+
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="form-step">
+
+        <h2>Step 3: Hackathon Preferences</h2>
+
+        <label>Track Preference</label>
+        <select id="track">
+          <option value="">Select Track</option>
+          <option>AI</option>
+          <option>Web</option>
+          <option>IoT</option>
+          <option>Open</option>
+        </select>
+
+        <label>T-Shirt Size</label>
+        <select id="shirt">
+          <option value="">Select Size</option>
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+        </select>
+
+        <label>Dietary Restrictions</label>
+        <textarea id="diet"></textarea>
+
+        <label>Additional Notes</label>
+        <textarea id="notes"></textarea>
+
+        <div class="buttons">
+          <button type="button" class="prev-btn">
+            Previous
+          </button>
+
+          <button type="button" class="next-btn">
+            Next
+          </button>
+        </div>
+
+      </div>
+
+      <!-- STEP 4 SUMMARY -->
+      <div class="form-step">
+
+        <h2>Summary</h2>
+
+        <div id="summary"></div>
+
+        <div class="buttons">
+          <button type="button" class="prev-btn">
+            Previous
+          </button>
+
+          <button type="submit">
+            Submit
+          </button>
+        </div>
+
+      </div>
+
+    </form>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
