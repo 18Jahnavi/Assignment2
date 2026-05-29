@@ -1,157 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hackathon Registration Form</title>
 
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Hackathon Registration Form
+  </title>
+
+  <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
-  <div class="container">
+  <div class="main-container">
 
-    <h1>Hackathon Registration Form</h1>
+    <!-- LEFT SIDE -->
 
-    <!-- Progress Bar -->
-    <div class="progress-bar">
-      <div class="progress" id="progress"></div>
+    <div class="left-section">
+
+      <div>
+
+        <h1>
+          Hackathon
+          Registration
+        </h1>
+
+        <p>
+          Join the biggest innovation challenge
+          and build amazing projects with
+          creative teams.
+        </p>
+
+        <!-- STEP INDICATOR -->
+
+        <div class="step-indicator">
+
+          <div class="step active-step">
+            <span>1</span>
+            <p>Personal Info</p>
+          </div>
+
+          <div class="step">
+            <span>2</span>
+            <p>Team Details</p>
+          </div>
+
+          <div class="step">
+            <span>3</span>
+            <p>Preferences</p>
+          </div>
+
+          <div class="step">
+            <span>4</span>
+            <p>Summary</p>
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
 
-    <!-- FORM -->
-    <form id="multiStepForm">
+    <!-- RIGHT SIDE -->
 
-      <!-- STEP 1 -->
-      <div class="form-step active">
+    <div class="right-section">
 
-        <h2>Step 1: Personal Information</h2>
+      <!-- PROGRESS BAR -->
 
-        <label>Full Name</label>
-        <input type="text" id="fullName" placeholder="Enter your name">
+      <div class="progress-bar">
 
-        <label>Date of Birth</label>
-        <input type="date" id="dob">
-
-        <label>Gender</label>
-        <select id="gender">
-          <option value="">Select Gender</option>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Other</option>
-        </select>
-
-        <button type="button" class="next-btn">
-          Next
-        </button>
+        <div
+          class="progress"
+          id="progress"
+        ></div>
 
       </div>
 
-      <!-- STEP 2 -->
-      <div class="form-step">
+      <!-- FORM -->
 
-        <h2>Step 2: Contact & Team Details</h2>
+      <form id="multiStepForm">
 
-        <label>Email</label>
-        <input type="email" id="email" placeholder="Enter email">
+        <!-- STEP 1 -->
 
-        <label>Phone Number</label>
-        <input type="text" id="phone" placeholder="Enter phone number">
+        <div class="form-step active">
 
-        <label>Team Name</label>
-        <input type="text" id="teamName" placeholder="Enter team name">
+          <h2>
+            Personal Information
+          </h2>
 
-        <label>Team Size</label>
-        <select id="teamSize">
-          <option value="">Select Team Size</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+          <div class="input-group">
 
-        <label>Role in Team</label>
-        <select id="role">
-          <option value="">Select Role</option>
-          <option>Developer</option>
-          <option>Designer</option>
-          <option>Tester</option>
-          <option>Team Lead</option>
-        </select>
+            <label>
+              Full Name
+            </label>
 
-        <div class="buttons">
-          <button type="button" class="prev-btn">
-            Previous
-          </button>
+            <input
+              type="text"
+              id="fullName"
+              placeholder="Enter your full name"
+            >
 
-          <button type="button" class="next-btn">
+          </div>
+
+          <div class="input-group">
+
+            <label>
+              Date of Birth
+            </label>
+
+            <input
+              type="date"
+              id="dob"
+            >
+
+          </div>
+
+          <div class="input-group">
+
+            <label>
+              Gender
+            </label>
+
+            <select id="gender">
+
+              <option value="">
+                Select Gender
+              </option>
+
+              <option>
+                Male
+              </option>
+
+              <option>
+                Female
+              </option>
+
+              <option>
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+          <button
+            type="button"
+            class="next-btn"
+          >
             Next
           </button>
+
         </div>
 
-      </div>
+        <!-- STEP 2 -->
 
-      <!-- STEP 3 -->
-      <div class="form-step">
+        <div class="form-step">
 
-        <h2>Step 3: Hackathon Preferences</h2>
+          <h2>
+            Contact & Team Details
+          </h2>
 
-        <label>Track Preference</label>
-        <select id="track">
-          <option value="">Select Track</option>
-          <option>AI</option>
-          <option>Web</option>
-          <option>IoT</option>
-          <option>Open</option>
-        </select>
+          <div class="input-group">
 
-        <label>T-Shirt Size</label>
-        <select id="shirt">
-          <option value="">Select Size</option>
-          <option>S</option>
-          <option>M</option>
-          <option>L</option>
-          <option>XL</option>
-        </select>
+            <label>Email</label>
 
-        <label>Dietary Restrictions</label>
-        <textarea id="diet"></textarea>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter email"
+            >
 
-        <label>Additional Notes</label>
-        <textarea id="notes"></textarea>
+          </div>
 
-        <div class="buttons">
-          <button type="button" class="prev-btn">
-            Previous
-          </button>
+          <div class="input-group">
 
-          <button type="button" class="next-btn">
-            Next
-          </button>
+            <label>
+              Phone Number
+            </label>
+
+            <input
+              type="text"
+              id="phone"
+              placeholder="Enter phone number"
+            >
+
+          </div>
+
+          <div class="input-group">
+
+            <label>
+              Team Name
+            </label>
+
+            <input
+              type="text"
+              id="teamName"
+              placeholder="Enter team name"
+            >
+
+          </div>
+
+          <div class="input-group">
+
+            <label>
+              Team Size
+            </label>
+
+            <select id="teamSize">
+
+              <option value="">
+                Select Team Size
+              </option>
+
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+
+            </select>
+
+          </div>
+
+          <div class="input-group">
+
+            <label>
+              Role in Team
+            </label>
+
+            <select id="role">
+
+              <option value="">
+                Select Role
+              </option>
+
+              <option>
+                Developer
+              </option>
+
+              <option>
+                Designer
+              </option>
+
+              <option>
+                Tester
+              </option>
+
+              <option>
+                Team Lead
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="btns">
+
+            <button
+              type="button"
+              class="prev-btn"
+            >
+              Previous
+            </button>
+
+            <button
+              type="button"
+              class="next-btn"
+            >
+              Next
+            </button>
+
+          </div>
+
         </div>
 
-      </div>
+        <!-- STEP 3 -->
 
-      <!-- STEP 4 SUMMARY -->
-      <div class="form-step">
+        <div class="form-step">
 
-        <h2>Summary</h2>
+          <h2>
+            Hackathon Preferences
+          </h2>
 
-        <div id="summary"></div>
+          <div class="input-group">
 
-        <div class="buttons">
-          <button type="button" class="prev-btn">
-            Previous
-          </button>
+            <label>
+              Track Preference
+            </label>
 
-          <button type="submit">
-            Submit
-          </button>
+            <select id="track">
+
+              <option value="">
+                Select Track
+              </option>
+
+              <option>AI</option>
+              <option>Web</option>
+              <option>IoT</option>
+              <option>Open</option>
+
+            </select>
+
+          </div>
+
+          <div class="input-group">
+
+            <label>
+              T-Shirt Size
+            </label>
+
+            <select id="shirt">
+
+              <option value="">
+                Select Size
+              </option>
+
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+
+            </select>
+
+          </div>
+
+          <div class="input-group">
+
+            <label>
+              Dietary Restrictions
+            </label>
+
+            <textarea id="diet"></textarea>
+
+          </div>
+
+          <div class="input-group">
+
+            <label>
+              Additional Notes
+            </label>
+
+            <textarea id="notes"></textarea>
+
+          </div>
+
+          <div class="btns">
+
+            <button
+              type="button"
+              class="prev-btn"
+            >
+              Previous
+            </button>
+
+            <button
+              type="button"
+              class="next-btn"
+            >
+              Next
+            </button>
+
+          </div>
+
         </div>
 
-      </div>
+        <!-- STEP 4 -->
 
-    </form>
+        <div class="form-step">
+
+          <h2>
+            Summary
+          </h2>
+
+          <div id="summary"></div>
+
+          <div class="btns">
+
+            <button
+              type="button"
+              class="prev-btn"
+            >
+              Previous
+            </button>
+
+            <button type="submit">
+              Submit
+            </button>
+
+          </div>
+
+        </div>
+
+      </form>
+
+    </div>
 
   </div>
 
