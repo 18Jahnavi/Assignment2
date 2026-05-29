@@ -10,9 +10,6 @@ document.querySelectorAll(".prev-btn");
 const progress =
 document.getElementById("progress");
 
-const steps =
-document.querySelectorAll(".step");
-
 let currentStep = 0;
 
 /* SHOW STEP */
@@ -28,7 +25,7 @@ function showStep(step){
   formSteps[step]
   .classList.add("active");
 
-  /* PROGRESS BAR */
+  /* UPDATE PROGRESS BAR */
 
   const progressPercent =
   ((step + 1) / formSteps.length) * 100;
@@ -36,18 +33,7 @@ function showStep(step){
   progress.style.width =
   `${progressPercent}%`;
 
-  /* STEP INDICATOR */
-
-  steps.forEach((item) => {
-
-    item.classList.remove("active-step");
-
-  });
-
-  steps[step]
-  .classList.add("active-step");
-
-  /* SUMMARY */
+  /* SHOW SUMMARY */
 
   if(step === 3){
     showSummary();
@@ -127,9 +113,13 @@ function validateStep(){
     const phone =
     document.getElementById("phone").value;
 
+    const teamName =
+    document.getElementById("teamName").value;
+
     if(
       email === "" ||
-      phone === ""
+      phone === "" ||
+      teamName === ""
     ){
 
       alert(
@@ -138,6 +128,8 @@ function validateStep(){
 
       return false;
     }
+
+    /* EMAIL VALIDATION */
 
     const emailPattern =
     /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
@@ -148,6 +140,8 @@ function validateStep(){
 
       return false;
     }
+
+    /* PHONE VALIDATION */
 
     if(phone.length < 10){
 
@@ -167,9 +161,17 @@ function validateStep(){
     const track =
     document.getElementById("track").value;
 
-    if(track === ""){
+    const shirt =
+    document.getElementById("shirt").value;
 
-      alert("Please select track");
+    if(
+      track === "" ||
+      shirt === ""
+    ){
+
+      alert(
+        "Please select required options"
+      );
 
       return false;
     }

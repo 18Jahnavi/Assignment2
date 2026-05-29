@@ -19,136 +19,179 @@
 
 <body>
 
-  <div class="main-container">
+  <div class="container">
 
-    <!-- LEFT SIDE -->
+    <h1>
+      Hackathon Registration Form
+    </h1>
 
-    <div class="left-section">
+    <!-- PROGRESS BAR -->
 
-      <div>
+    <div class="progress-bar">
 
-        <h1>
-          Hackathon
-          Registration
-        </h1>
-
-        <p>
-          Join the biggest innovation challenge
-          and build amazing projects with
-          creative teams.
-        </p>
-
-        <!-- STEP INDICATOR -->
-
-        <div class="step-indicator">
-
-          <div class="step active-step">
-            <span>1</span>
-            <p>Personal Info</p>
-          </div>
-
-          <div class="step">
-            <span>2</span>
-            <p>Team Details</p>
-          </div>
-
-          <div class="step">
-            <span>3</span>
-            <p>Preferences</p>
-          </div>
-
-          <div class="step">
-            <span>4</span>
-            <p>Summary</p>
-          </div>
-
-        </div>
-
-      </div>
+      <div
+        class="progress"
+        id="progress"
+      ></div>
 
     </div>
 
-    <!-- RIGHT SIDE -->
+    <!-- FORM -->
 
-    <div class="right-section">
+    <form id="multiStepForm">
 
-      <!-- PROGRESS BAR -->
+      <!-- STEP 1 -->
 
-      <div class="progress-bar">
+      <div class="form-step active">
 
-        <div
-          class="progress"
-          id="progress"
-        ></div>
+        <h2>
+          Step 1: Personal Information
+        </h2>
+
+        <label>
+          Full Name
+        </label>
+
+        <input
+          type="text"
+          id="fullName"
+          placeholder="Enter your full name"
+        >
+
+        <label>
+          Date of Birth
+        </label>
+
+        <input
+          type="date"
+          id="dob"
+        >
+
+        <label>
+          Gender
+        </label>
+
+        <select id="gender">
+
+          <option value="">
+            Select Gender
+          </option>
+
+          <option>
+            Male
+          </option>
+
+          <option>
+            Female
+          </option>
+
+          <option>
+            Other
+          </option>
+
+        </select>
+
+        <button
+          type="button"
+          class="next-btn"
+        >
+          Next
+        </button>
 
       </div>
 
-      <!-- FORM -->
+      <!-- STEP 2 -->
 
-      <form id="multiStepForm">
+      <div class="form-step">
 
-        <!-- STEP 1 -->
+        <h2>
+          Step 2: Contact & Team Details
+        </h2>
 
-        <div class="form-step active">
+        <label>
+          Email
+        </label>
 
-          <h2>
-            Personal Information
-          </h2>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter email"
+        >
 
-          <div class="input-group">
+        <label>
+          Phone Number
+        </label>
 
-            <label>
-              Full Name
-            </label>
+        <input
+          type="text"
+          id="phone"
+          placeholder="Enter phone number"
+        >
 
-            <input
-              type="text"
-              id="fullName"
-              placeholder="Enter your full name"
-            >
+        <label>
+          Team Name
+        </label>
 
-          </div>
+        <input
+          type="text"
+          id="teamName"
+          placeholder="Enter team name"
+        >
 
-          <div class="input-group">
+        <label>
+          Team Size
+        </label>
 
-            <label>
-              Date of Birth
-            </label>
+        <select id="teamSize">
 
-            <input
-              type="date"
-              id="dob"
-            >
+          <option value="">
+            Select Team Size
+          </option>
 
-          </div>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
 
-          <div class="input-group">
+        </select>
 
-            <label>
-              Gender
-            </label>
+        <label>
+          Role in Team
+        </label>
 
-            <select id="gender">
+        <select id="role">
 
-              <option value="">
-                Select Gender
-              </option>
+          <option value="">
+            Select Role
+          </option>
 
-              <option>
-                Male
-              </option>
+          <option>
+            Developer
+          </option>
 
-              <option>
-                Female
-              </option>
+          <option>
+            Designer
+          </option>
 
-              <option>
-                Other
-              </option>
+          <option>
+            Tester
+          </option>
 
-            </select>
+          <option>
+            Team Lead
+          </option>
 
-          </div>
+        </select>
+
+        <div class="buttons">
+
+          <button
+            type="button"
+            class="prev-btn"
+          >
+            Previous
+          </button>
 
           <button
             type="button"
@@ -159,248 +202,110 @@
 
         </div>
 
-        <!-- STEP 2 -->
+      </div>
 
-        <div class="form-step">
+      <!-- STEP 3 -->
 
-          <h2>
-            Contact & Team Details
-          </h2>
+      <div class="form-step">
 
-          <div class="input-group">
+        <h2>
+          Step 3: Hackathon Preferences
+        </h2>
 
-            <label>Email</label>
+        <label>
+          Track Preference
+        </label>
 
-            <input
-              type="email"
-              id="email"
-              placeholder="Enter email"
-            >
+        <select id="track">
 
-          </div>
+          <option value="">
+            Select Track
+          </option>
 
-          <div class="input-group">
+          <option>AI</option>
+          <option>Web</option>
+          <option>IoT</option>
+          <option>Open</option>
 
-            <label>
-              Phone Number
-            </label>
+        </select>
 
-            <input
-              type="text"
-              id="phone"
-              placeholder="Enter phone number"
-            >
+        <label>
+          T-Shirt Size
+        </label>
 
-          </div>
+        <select id="shirt">
 
-          <div class="input-group">
+          <option value="">
+            Select Size
+          </option>
 
-            <label>
-              Team Name
-            </label>
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
 
-            <input
-              type="text"
-              id="teamName"
-              placeholder="Enter team name"
-            >
+        </select>
 
-          </div>
+        <label>
+          Dietary Restrictions
+        </label>
 
-          <div class="input-group">
+        <textarea id="diet"></textarea>
 
-            <label>
-              Team Size
-            </label>
+        <label>
+          Additional Notes
+        </label>
 
-            <select id="teamSize">
+        <textarea id="notes"></textarea>
 
-              <option value="">
-                Select Team Size
-              </option>
+        <div class="buttons">
 
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+          <button
+            type="button"
+            class="prev-btn"
+          >
+            Previous
+          </button>
 
-            </select>
-
-          </div>
-
-          <div class="input-group">
-
-            <label>
-              Role in Team
-            </label>
-
-            <select id="role">
-
-              <option value="">
-                Select Role
-              </option>
-
-              <option>
-                Developer
-              </option>
-
-              <option>
-                Designer
-              </option>
-
-              <option>
-                Tester
-              </option>
-
-              <option>
-                Team Lead
-              </option>
-
-            </select>
-
-          </div>
-
-          <div class="btns">
-
-            <button
-              type="button"
-              class="prev-btn"
-            >
-              Previous
-            </button>
-
-            <button
-              type="button"
-              class="next-btn"
-            >
-              Next
-            </button>
-
-          </div>
+          <button
+            type="button"
+            class="next-btn"
+          >
+            Next
+          </button>
 
         </div>
 
-        <!-- STEP 3 -->
+      </div>
 
-        <div class="form-step">
+      <!-- STEP 4 -->
 
-          <h2>
-            Hackathon Preferences
-          </h2>
+      <div class="form-step">
 
-          <div class="input-group">
+        <h2>
+          Summary
+        </h2>
 
-            <label>
-              Track Preference
-            </label>
+        <div id="summary"></div>
 
-            <select id="track">
+        <div class="buttons">
 
-              <option value="">
-                Select Track
-              </option>
+          <button
+            type="button"
+            class="prev-btn"
+          >
+            Previous
+          </button>
 
-              <option>AI</option>
-              <option>Web</option>
-              <option>IoT</option>
-              <option>Open</option>
-
-            </select>
-
-          </div>
-
-          <div class="input-group">
-
-            <label>
-              T-Shirt Size
-            </label>
-
-            <select id="shirt">
-
-              <option value="">
-                Select Size
-              </option>
-
-              <option>S</option>
-              <option>M</option>
-              <option>L</option>
-              <option>XL</option>
-
-            </select>
-
-          </div>
-
-          <div class="input-group">
-
-            <label>
-              Dietary Restrictions
-            </label>
-
-            <textarea id="diet"></textarea>
-
-          </div>
-
-          <div class="input-group">
-
-            <label>
-              Additional Notes
-            </label>
-
-            <textarea id="notes"></textarea>
-
-          </div>
-
-          <div class="btns">
-
-            <button
-              type="button"
-              class="prev-btn"
-            >
-              Previous
-            </button>
-
-            <button
-              type="button"
-              class="next-btn"
-            >
-              Next
-            </button>
-
-          </div>
+          <button type="submit">
+            Submit
+          </button>
 
         </div>
 
-        <!-- STEP 4 -->
+      </div>
 
-        <div class="form-step">
-
-          <h2>
-            Summary
-          </h2>
-
-          <div id="summary"></div>
-
-          <div class="btns">
-
-            <button
-              type="button"
-              class="prev-btn"
-            >
-              Previous
-            </button>
-
-            <button type="submit">
-              Submit
-            </button>
-
-          </div>
-
-        </div>
-
-      </form>
-
-    </div>
+    </form>
 
   </div>
 
