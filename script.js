@@ -7,8 +7,14 @@ document.querySelectorAll(".next-btn");
 const prevBtns =
 document.querySelectorAll(".prev-btn");
 
-const progress =
-document.getElementById("progress");
+const progressBar =
+document.getElementById("progressBar");
+
+const stepIndicators =
+document.querySelectorAll(".step");
+
+const form =
+document.getElementById("multiStepForm");
 
 let currentStep = 0;
 
@@ -25,19 +31,43 @@ function showStep(step){
   formSteps[step]
   .classList.add("active");
 
-  /* UPDATE PROGRESS BAR */
+  updateProgress();
 
-  const progressPercent =
-  ((step + 1) / formSteps.length) * 100;
-
-  progress.style.width =
-  `${progressPercent}%`;
-
-  /* SHOW SUMMARY */
+  updateStepIndicator();
 
   if(step === 3){
+
     showSummary();
+
   }
+
+}
+
+/* UPDATE PROGRESS BAR */
+
+function updateProgress(){
+
+  const progressPercent =
+  ((currentStep + 1) /
+  formSteps.length) * 100;
+
+  progressBar.style.width =
+  `${progressPercent}%`;
+
+}
+
+/* UPDATE STEP INDICATOR */
+
+function updateStepIndicator(){
+
+  stepIndicators.forEach((step) => {
+
+    step.classList.remove("active-step");
+
+  });
+
+  stepIndicators[currentStep]
+  .classList.add("active-step");
 
 }
 
@@ -52,6 +82,8 @@ nextBtns.forEach((button) => {
       currentStep++;
 
       showStep(currentStep);
+
+      saveFormData();
 
     }
 
@@ -81,8 +113,8 @@ function validateStep(){
 
   if(currentStep === 0){
 
-    const name =
-    document.getElementById("fullName").value;
+    const fullName =
+    document.getElementById("fullName").value.trim();
 
     const dob =
     document.getElementById("dob").value;
@@ -91,12 +123,14 @@ function validateStep(){
     document.getElementById("gender").value;
 
     if(
-      name === "" ||
+      fullName === "" ||
       dob === "" ||
       gender === ""
     ){
 
-      alert("Please fill all fields");
+      alert(
+        "Please fill all Personal Information fields."
+      );
 
       return false;
     }
@@ -108,13 +142,13 @@ function validateStep(){
   if(currentStep === 1){
 
     const email =
-    document.getElementById("email").value;
+    document.getElementById("email").value.trim();
 
     const phone =
-    document.getElementById("phone").value;
+    document.getElementById("phone").value.trim();
 
     const teamName =
-    document.getElementById("teamName").value;
+    document.getElementById("teamName").value.trim();
 
     if(
       email === "" ||
@@ -123,30 +157,35 @@ function validateStep(){
     ){
 
       alert(
-        "Please fill all required fields"
+        "Please fill all required fields."
       );
 
       return false;
     }
 
-    /* EMAIL VALIDATION */
-
     const emailPattern =
-    /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if(!email.match(emailPattern)){
+    if(
+      !emailPattern.test(email)
+    ){
 
-      alert("Enter valid email");
+      alert(
+        "Please enter a valid email address."
+      );
 
       return false;
     }
 
-    /* PHONE VALIDATION */
+    const phonePattern =
+    /^[0-9]{10}$/;
 
-    if(phone.length < 10){
+    if(
+      !phonePattern.test(phone)
+    ){
 
       alert(
-        "Phone number must be 10 digits"
+        "Phone number must contain exactly 10 digits."
       );
 
       return false;
@@ -170,7 +209,7 @@ function validateStep(){
     ){
 
       alert(
-        "Please select required options"
+        "Please select Track Preference and T-Shirt Size."
       );
 
       return false;
@@ -179,9 +218,10 @@ function validateStep(){
   }
 
   return true;
+
 }
 
-/* SUMMARY */
+/* SUMMARY PAGE */
 
 function showSummary(){
 
@@ -191,12 +231,12 @@ function showSummary(){
   summary.innerHTML = `
 
     <p>
-      <strong>Name:</strong>
+      <strong>Full Name:</strong>
       ${document.getElementById("fullName").value}
     </p>
 
     <p>
-      <strong>DOB:</strong>
+      <strong>Date of Birth:</strong>
       ${document.getElementById("dob").value}
     </p>
 
@@ -211,7 +251,7 @@ function showSummary(){
     </p>
 
     <p>
-      <strong>Phone:</strong>
+      <strong>Phone Number:</strong>
       ${document.getElementById("phone").value}
     </p>
 
@@ -221,29 +261,170 @@ function showSummary(){
     </p>
 
     <p>
-      <strong>Track:</strong>
+      <strong>Team Size:</strong>
+      ${document.getElementById("teamSize").value}
+    </p>
+
+    <p>
+      <strong>Role:</strong>
+      ${document.getElementById("role").value}
+    </p>
+
+    <p>
+      <strong>Track Preference:</strong>
       ${document.getElementById("track").value}
     </p>
 
     <p>
-      <strong>T-Shirt:</strong>
+      <strong>T-Shirt Size:</strong>
       ${document.getElementById("shirt").value}
+    </p>
+
+    <p>
+      <strong>Dietary Restrictions:</strong>
+      ${document.getElementById("diet").value}
+    </p>
+
+    <p>
+      <strong>Additional Notes:</strong>
+      ${document.getElementById("notes").value}
     </p>
 
   `;
 
 }
 
-/* SUBMIT */
+/* SAVE DATA TO LOCAL STORAGE */
 
-document
-.getElementById("multiStepForm")
-.addEventListener("submit", function(e){
+function saveFormData(){
 
-  e.preventDefault();
+  const formData = {
 
-  alert(
-    "Registration Successful 🚀"
+    fullName:
+    document.getElementById("fullName").value,
+
+    dob:
+    document.getElementById("dob").value,
+
+    gender:
+    document.getElementById("gender").value,
+
+    email:
+    document.getElementById("email").value,
+
+    phone:
+    document.getElementById("phone").value,
+
+    teamName:
+    document.getElementById("teamName").value,
+
+    teamSize:
+    document.getElementById("teamSize").value,
+
+    role:
+    document.getElementById("role").value,
+
+    track:
+    document.getElementById("track").value,
+
+    shirt:
+    document.getElementById("shirt").value,
+
+    diet:
+    document.getElementById("diet").value,
+
+    notes:
+    document.getElementById("notes").value
+
+  };
+
+  localStorage.setItem(
+    "hackathonForm",
+    JSON.stringify(formData)
   );
 
-});
+}
+
+/* LOAD SAVED DATA */
+
+function loadFormData(){
+
+  const savedData =
+  JSON.parse(
+    localStorage.getItem("hackathonForm")
+  );
+
+  if(savedData){
+
+    document.getElementById("fullName").value =
+    savedData.fullName || "";
+
+    document.getElementById("dob").value =
+    savedData.dob || "";
+
+    document.getElementById("gender").value =
+    savedData.gender || "";
+
+    document.getElementById("email").value =
+    savedData.email || "";
+
+    document.getElementById("phone").value =
+    savedData.phone || "";
+
+    document.getElementById("teamName").value =
+    savedData.teamName || "";
+
+    document.getElementById("teamSize").value =
+    savedData.teamSize || "";
+
+    document.getElementById("role").value =
+    savedData.role || "";
+
+    document.getElementById("track").value =
+    savedData.track || "";
+
+    document.getElementById("shirt").value =
+    savedData.shirt || "";
+
+    document.getElementById("diet").value =
+    savedData.diet || "";
+
+    document.getElementById("notes").value =
+    savedData.notes || "";
+
+  }
+
+}
+
+/* FORM SUBMIT */
+
+form.addEventListener(
+  "submit",
+  function(e){
+
+    e.preventDefault();
+
+    saveFormData();
+
+    alert(
+      "🎉 Registration Successful!"
+    );
+
+    localStorage.removeItem(
+      "hackathonForm"
+    );
+
+    form.reset();
+
+    currentStep = 0;
+
+    showStep(currentStep);
+
+  }
+);
+
+/* INITIAL LOAD */
+
+loadFormData();
+
+showStep(currentStep);
