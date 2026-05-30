@@ -10,15 +10,26 @@ document.querySelectorAll(".prev-btn");
 const progressBar =
 document.getElementById("progressBar");
 
+const progressPercent =
+document.getElementById("progressPercent");
+
 const stepIndicators =
 document.querySelectorAll(".step");
 
 const form =
 document.getElementById("multiStepForm");
 
+const successModal =
+document.getElementById("successModal");
+
+const closeModal =
+document.getElementById("closeModal");
+
 let currentStep = 0;
 
-/* SHOW STEP */
+/* --------------------
+   SHOW CURRENT STEP
+-------------------- */
 
 function showStep(step){
 
@@ -37,103 +48,190 @@ function showStep(step){
 
   if(step === 3){
 
-    showSummary();
+    generateSummary();
 
   }
 
 }
 
-/* UPDATE PROGRESS BAR */
+/* --------------------
+   PROGRESS BAR
+-------------------- */
 
 function updateProgress(){
 
-  const progressPercent =
-  ((currentStep + 1) /
-  formSteps.length) * 100;
+  const percentage =
+  Math.round(
+    ((currentStep + 1) /
+    formSteps.length) * 100
+  );
 
   progressBar.style.width =
-  `${progressPercent}%`;
+  `${percentage}%`;
+
+  progressPercent.textContent =
+  `${percentage}% Completed`;
 
 }
 
-/* UPDATE STEP INDICATOR */
+/* --------------------
+   STEP INDICATOR
+-------------------- */
 
 function updateStepIndicator(){
 
   stepIndicators.forEach((step) => {
 
-    step.classList.remove("active-step");
+    step.classList.remove(
+      "active-step"
+    );
 
   });
 
   stepIndicators[currentStep]
-  .classList.add("active-step");
+  .classList.add(
+    "active-step"
+  );
 
 }
 
-/* NEXT BUTTON */
+/* --------------------
+   NEXT BUTTONS
+-------------------- */
 
 nextBtns.forEach((button) => {
 
-  button.addEventListener("click", () => {
+  button.addEventListener(
+    "click",
+    () => {
 
-    if(validateStep()){
+      if(validateStep()){
 
-      currentStep++;
+        saveToLocalStorage();
 
-      showStep(currentStep);
+        currentStep++;
 
-      saveFormData();
+        showStep(currentStep);
+
+      }
 
     }
-
-  });
+  );
 
 });
 
-/* PREVIOUS BUTTON */
+/* --------------------
+   PREVIOUS BUTTONS
+-------------------- */
 
 prevBtns.forEach((button) => {
 
-  button.addEventListener("click", () => {
+  button.addEventListener(
+    "click",
+    () => {
 
-    currentStep--;
+      currentStep--;
 
-    showStep(currentStep);
+      showStep(currentStep);
 
-  });
+    }
+  );
 
 });
 
-/* VALIDATION */
+/* --------------------
+   CLEAR ERRORS
+-------------------- */
+
+function clearErrors(){
+
+  const errors =
+  document.querySelectorAll(".error");
+
+  errors.forEach((error) => {
+
+    error.textContent = "";
+
+  });
+
+}
+
+/* --------------------
+   VALIDATION
+-------------------- */
 
 function validateStep(){
+
+  clearErrors();
 
   /* STEP 1 */
 
   if(currentStep === 0){
 
     const fullName =
-    document.getElementById("fullName").value.trim();
+    document.getElementById("fullName")
+    .value
+    .trim();
 
     const dob =
-    document.getElementById("dob").value;
+    document.getElementById("dob")
+    .value;
 
     const gender =
-    document.getElementById("gender").value;
+    document.getElementById("gender")
+    .value;
 
-    if(
-      fullName === "" ||
-      dob === "" ||
-      gender === ""
+    let valid = true;
+
+    const namePattern =
+    /^[A-Za-z ]+$/;
+
+    if(fullName === ""){
+
+      document.getElementById(
+        "nameError"
+      ).textContent =
+      "Full Name is required";
+
+      valid = false;
+
+    }
+    else if(
+      !namePattern.test(fullName)
     ){
 
-      alert(
-        "Please fill all Personal Information fields."
-      );
+      document.getElementById(
+        "nameError"
+      ).textContent =
+      "Only letters and spaces allowed";
 
-      return false;
+      valid = false;
+
     }
+
+    if(dob === ""){
+
+      document.getElementById(
+        "dobError"
+      ).textContent =
+      "Date of Birth is required";
+
+      valid = false;
+
+    }
+
+    if(gender === ""){
+
+      document.getElementById(
+        "genderError"
+      ).textContent =
+      "Please select Gender";
+
+      valid = false;
+
+    }
+
+    return valid;
 
   }
 
@@ -142,54 +240,70 @@ function validateStep(){
   if(currentStep === 1){
 
     const email =
-    document.getElementById("email").value.trim();
+    document.getElementById("email")
+    .value
+    .trim();
 
     const phone =
-    document.getElementById("phone").value.trim();
+    document.getElementById("phone")
+    .value
+    .trim();
 
-    const teamName =
-    document.getElementById("teamName").value.trim();
-
-    if(
-      email === "" ||
-      phone === "" ||
-      teamName === ""
-    ){
-
-      alert(
-        "Please fill all required fields."
-      );
-
-      return false;
-    }
+    let valid = true;
 
     const emailPattern =
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if(
-      !emailPattern.test(email)
-    ){
-
-      alert(
-        "Please enter a valid email address."
-      );
-
-      return false;
-    }
-
     const phonePattern =
     /^[0-9]{10}$/;
 
-    if(
+    if(email === ""){
+
+      document.getElementById(
+        "emailError"
+      ).textContent =
+      "Email is required";
+
+      valid = false;
+
+    }
+    else if(
+      !emailPattern.test(email)
+    ){
+
+      document.getElementById(
+        "emailError"
+      ).textContent =
+      "Invalid Email Format";
+
+      valid = false;
+
+    }
+
+    if(phone === ""){
+
+      document.getElementById(
+        "phoneError"
+      ).textContent =
+      "Phone Number is required";
+
+      valid = false;
+
+    }
+    else if(
       !phonePattern.test(phone)
     ){
 
-      alert(
-        "Phone number must contain exactly 10 digits."
-      );
+      document.getElementById(
+        "phoneError"
+      ).textContent =
+      "Phone must be exactly 10 digits";
 
-      return false;
+      valid = false;
+
     }
+
+    return valid;
 
   }
 
@@ -198,10 +312,12 @@ function validateStep(){
   if(currentStep === 2){
 
     const track =
-    document.getElementById("track").value;
+    document.getElementById("track")
+    .value;
 
     const shirt =
-    document.getElementById("shirt").value;
+    document.getElementById("shirt")
+    .value;
 
     if(
       track === "" ||
@@ -209,10 +325,11 @@ function validateStep(){
     ){
 
       alert(
-        "Please select Track Preference and T-Shirt Size."
+        "Please select Track and T-Shirt Size"
       );
 
       return false;
+
     }
 
   }
@@ -221,82 +338,88 @@ function validateStep(){
 
 }
 
-/* SUMMARY PAGE */
+/* --------------------
+   SUMMARY
+-------------------- */
 
-function showSummary(){
+function generateSummary(){
 
   const summary =
-  document.getElementById("summary");
+  document.getElementById(
+    "summary"
+  );
 
   summary.innerHTML = `
 
-    <p>
-      <strong>Full Name:</strong>
-      ${document.getElementById("fullName").value}
-    </p>
+  <p>
+    <strong>Full Name:</strong>
+    ${document.getElementById("fullName").value}
+  </p>
 
-    <p>
-      <strong>Date of Birth:</strong>
-      ${document.getElementById("dob").value}
-    </p>
+  <p>
+    <strong>Date of Birth:</strong>
+    ${document.getElementById("dob").value}
+  </p>
 
-    <p>
-      <strong>Gender:</strong>
-      ${document.getElementById("gender").value}
-    </p>
+  <p>
+    <strong>Gender:</strong>
+    ${document.getElementById("gender").value}
+  </p>
 
-    <p>
-      <strong>Email:</strong>
-      ${document.getElementById("email").value}
-    </p>
+  <p>
+    <strong>Email:</strong>
+    ${document.getElementById("email").value}
+  </p>
 
-    <p>
-      <strong>Phone Number:</strong>
-      ${document.getElementById("phone").value}
-    </p>
+  <p>
+    <strong>Phone Number:</strong>
+    ${document.getElementById("phone").value}
+  </p>
 
-    <p>
-      <strong>Team Name:</strong>
-      ${document.getElementById("teamName").value}
-    </p>
+  <p>
+    <strong>Team Name:</strong>
+    ${document.getElementById("teamName").value}
+  </p>
 
-    <p>
-      <strong>Team Size:</strong>
-      ${document.getElementById("teamSize").value}
-    </p>
+  <p>
+    <strong>Team Size:</strong>
+    ${document.getElementById("teamSize").value}
+  </p>
 
-    <p>
-      <strong>Role:</strong>
-      ${document.getElementById("role").value}
-    </p>
+  <p>
+    <strong>Role:</strong>
+    ${document.getElementById("role").value}
+  </p>
 
-    <p>
-      <strong>Track Preference:</strong>
-      ${document.getElementById("track").value}
-    </p>
+  <p>
+    <strong>Track:</strong>
+    ${document.getElementById("track").value}
+  </p>
 
-    <p>
-      <strong>T-Shirt Size:</strong>
-      ${document.getElementById("shirt").value}
-    </p>
+  <p>
+    <strong>T-Shirt Size:</strong>
+    ${document.getElementById("shirt").value}
+  </p>
 
-    <p>
-      <strong>Dietary Restrictions:</strong>
-      ${document.getElementById("diet").value}
-    </p>
+  <p>
+    <strong>Dietary Restrictions:</strong>
+    ${document.getElementById("diet").value}
+  </p>
 
-    <p>
-      <strong>Additional Notes:</strong>
-      ${document.getElementById("notes").value}
-    </p>
+  <p>
+    <strong>Additional Notes:</strong>
+    ${document.getElementById("notes").value}
+  </p>
 
   `;
 
 }
 
-/* SAVE DATA TO LOCAL STORAGE */
+/* --------------------
+   LOCAL STORAGE
+-------------------- */
 
-function saveFormData(){
+function saveToLocalStorage(){
 
   const formData = {
 
@@ -339,64 +462,90 @@ function saveFormData(){
   };
 
   localStorage.setItem(
-    "hackathonForm",
+    "hackathonData",
     JSON.stringify(formData)
   );
 
 }
 
-/* LOAD SAVED DATA */
-
-function loadFormData(){
+function loadFromLocalStorage(){
 
   const savedData =
   JSON.parse(
-    localStorage.getItem("hackathonForm")
+    localStorage.getItem(
+      "hackathonData"
+    )
   );
 
   if(savedData){
 
-    document.getElementById("fullName").value =
+    document.getElementById(
+      "fullName"
+    ).value =
     savedData.fullName || "";
 
-    document.getElementById("dob").value =
+    document.getElementById(
+      "dob"
+    ).value =
     savedData.dob || "";
 
-    document.getElementById("gender").value =
+    document.getElementById(
+      "gender"
+    ).value =
     savedData.gender || "";
 
-    document.getElementById("email").value =
+    document.getElementById(
+      "email"
+    ).value =
     savedData.email || "";
 
-    document.getElementById("phone").value =
+    document.getElementById(
+      "phone"
+    ).value =
     savedData.phone || "";
 
-    document.getElementById("teamName").value =
+    document.getElementById(
+      "teamName"
+    ).value =
     savedData.teamName || "";
 
-    document.getElementById("teamSize").value =
+    document.getElementById(
+      "teamSize"
+    ).value =
     savedData.teamSize || "";
 
-    document.getElementById("role").value =
+    document.getElementById(
+      "role"
+    ).value =
     savedData.role || "";
 
-    document.getElementById("track").value =
+    document.getElementById(
+      "track"
+    ).value =
     savedData.track || "";
 
-    document.getElementById("shirt").value =
+    document.getElementById(
+      "shirt"
+    ).value =
     savedData.shirt || "";
 
-    document.getElementById("diet").value =
+    document.getElementById(
+      "diet"
+    ).value =
     savedData.diet || "";
 
-    document.getElementById("notes").value =
+    document.getElementById(
+      "notes"
+    ).value =
     savedData.notes || "";
 
   }
 
 }
 
-/* FORM SUBMIT */
+/* --------------------
+   FORM SUBMIT
+-------------------- */
 
 form.addEventListener(
   "submit",
@@ -404,15 +553,28 @@ form.addEventListener(
 
     e.preventDefault();
 
-    saveFormData();
+    saveToLocalStorage();
 
-    alert(
-      "🎉 Registration Successful!"
-    );
+    successModal.style.display =
+    "flex";
 
     localStorage.removeItem(
-      "hackathonForm"
+      "hackathonData"
     );
+
+  }
+);
+
+/* --------------------
+   CLOSE MODAL
+-------------------- */
+
+closeModal.addEventListener(
+  "click",
+  () => {
+
+    successModal.style.display =
+    "none";
 
     form.reset();
 
@@ -423,8 +585,11 @@ form.addEventListener(
   }
 );
 
-/* INITIAL LOAD */
+/* --------------------
+   INITIAL LOAD
+-------------------- */
 
-loadFormData();
+loadFromLocalStorage();
 
 showStep(currentStep);
+    
