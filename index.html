@@ -1,94 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>
-    Hackathon Registration Form
-  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackathon Registration Form</title>
 
   <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
 
   <div class="container">
 
-    <h1>
-      Hackathon Registration Form
-    </h1>
+    <h1>🚀 Hackathon Registration Form</h1>
 
-    <!-- PROGRESS BAR -->
-
-    <div class="progress-bar">
-
-      <div
-        class="progress"
-        id="progress"
-      ></div>
-
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <!-- FORM -->
+    <!-- Step Indicator -->
+    <div class="step-indicator">
+      <div class="step active-step">1</div>
+      <div class="step">2</div>
+      <div class="step">3</div>
+      <div class="step">4</div>
+    </div>
 
     <form id="multiStepForm">
 
       <!-- STEP 1 -->
-
       <div class="form-step active">
 
-        <h2>
-          Step 1: Personal Information
-        </h2>
+        <h2>Personal Information</h2>
 
-        <label>
+        <label for="fullName">
           Full Name
         </label>
 
         <input
           type="text"
           id="fullName"
+          aria-label="Full Name"
           placeholder="Enter your full name"
         >
 
-        <label>
+        <label for="dob">
           Date of Birth
         </label>
 
         <input
           type="date"
           id="dob"
+          aria-label="Date of Birth"
         >
 
-        <label>
+        <label for="gender">
           Gender
         </label>
 
-        <select id="gender">
-
-          <option value="">
-            Select Gender
-          </option>
-
-          <option>
-            Male
-          </option>
-
-          <option>
-            Female
-          </option>
-
-          <option>
-            Other
-          </option>
-
+        <select
+          id="gender"
+          aria-label="Gender"
+        >
+          <option value="">Select Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
         </select>
 
         <button
@@ -101,87 +78,72 @@
       </div>
 
       <!-- STEP 2 -->
-
       <div class="form-step">
 
-        <h2>
-          Step 2: Contact & Team Details
-        </h2>
+        <h2>Contact & Team Details</h2>
 
-        <label>
-          Email
+        <label for="email">
+          Email Address
         </label>
 
         <input
           type="email"
           id="email"
+          aria-label="Email Address"
           placeholder="Enter email"
         >
 
-        <label>
+        <label for="phone">
           Phone Number
         </label>
 
         <input
           type="text"
           id="phone"
+          aria-label="Phone Number"
           placeholder="Enter phone number"
         >
 
-        <label>
+        <label for="teamName">
           Team Name
         </label>
 
         <input
           type="text"
           id="teamName"
+          aria-label="Team Name"
           placeholder="Enter team name"
         >
 
-        <label>
+        <label for="teamSize">
           Team Size
         </label>
 
-        <select id="teamSize">
-
-          <option value="">
-            Select Team Size
-          </option>
-
+        <select
+          id="teamSize"
+          aria-label="Team Size"
+        >
+          <option value="">Select Team Size</option>
           <option>1</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
           <option>5</option>
-
         </select>
 
-        <label>
+        <label for="role">
           Role in Team
         </label>
 
-        <select id="role">
-
-          <option value="">
-            Select Role
-          </option>
-
-          <option>
-            Developer
-          </option>
-
-          <option>
-            Designer
-          </option>
-
-          <option>
-            Tester
-          </option>
-
-          <option>
-            Team Lead
-          </option>
-
+        <select
+          id="role"
+          aria-label="Role in Team"
+        >
+          <option value="">Select Role</option>
+          <option>Developer</option>
+          <option>Designer</option>
+          <option>Tester</option>
+          <option>Team Lead</option>
         </select>
 
         <div class="buttons">
@@ -205,58 +167,57 @@
       </div>
 
       <!-- STEP 3 -->
-
       <div class="form-step">
 
-        <h2>
-          Step 3: Hackathon Preferences
-        </h2>
+        <h2>Hackathon Preferences</h2>
 
-        <label>
+        <label for="track">
           Track Preference
         </label>
 
-        <select id="track">
-
-          <option value="">
-            Select Track
-          </option>
-
+        <select
+          id="track"
+          aria-label="Track Preference"
+        >
+          <option value="">Select Track</option>
           <option>AI</option>
           <option>Web</option>
           <option>IoT</option>
           <option>Open</option>
-
         </select>
 
-        <label>
+        <label for="shirt">
           T-Shirt Size
         </label>
 
-        <select id="shirt">
-
-          <option value="">
-            Select Size
-          </option>
-
+        <select
+          id="shirt"
+          aria-label="T-Shirt Size"
+        >
+          <option value="">Select Size</option>
           <option>S</option>
           <option>M</option>
           <option>L</option>
           <option>XL</option>
-
         </select>
 
-        <label>
+        <label for="diet">
           Dietary Restrictions
         </label>
 
-        <textarea id="diet"></textarea>
+        <textarea
+          id="diet"
+          aria-label="Dietary Restrictions"
+        ></textarea>
 
-        <label>
+        <label for="notes">
           Additional Notes
         </label>
 
-        <textarea id="notes"></textarea>
+        <textarea
+          id="notes"
+          aria-label="Additional Notes"
+        ></textarea>
 
         <div class="buttons">
 
@@ -282,9 +243,7 @@
 
       <div class="form-step">
 
-        <h2>
-          Summary
-        </h2>
+        <h2>Review & Submit</h2>
 
         <div id="summary"></div>
 
