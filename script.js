@@ -113,9 +113,17 @@ function validateStep(){
 
   if(currentStep === 0){
 
-    const fullName =
-    document.getElementById("fullName").value.trim();
+    const namePattern =
+/^[A-Za-z ]+$/;
 
+if(!namePattern.test(fullName)){
+
+  alert(
+    "Name should contain only letters and spaces."
+  );
+
+  return false;
+}
     const dob =
     document.getElementById("dob").value;
 
