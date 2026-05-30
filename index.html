@@ -3,148 +3,288 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Hackathon Registration Form</title>
 
   <link rel="stylesheet" href="style.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 </head>
+
 <body>
+
+  <!-- Background Circles -->
+
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+  <div class="circle circle3"></div>
+
+  <!-- Main Container -->
 
   <div class="container">
 
-    <h1>🚀 Hackathon Registration Form</h1>
+    <!-- Heading -->
+
+    <h1>
+      🚀 Hackathon Registration Form
+    </h1>
+
+    <p class="subtitle">
+      Register for the innovation challenge and showcase your skills.
+    </p>
+
+    <!-- Progress Percentage -->
+
+    <div class="progress-text">
+      <span id="progressPercent">
+        25% Completed
+      </span>
+    </div>
 
     <!-- Progress Bar -->
+
     <div class="progress-container">
-      <div class="progress-bar" id="progressBar"></div>
+
+      <div
+        class="progress-bar"
+        id="progressBar"
+      ></div>
+
     </div>
 
     <!-- Step Indicator -->
+
     <div class="step-indicator">
-      <div class="step active-step">1</div>
-      <div class="step">2</div>
-      <div class="step">3</div>
-      <div class="step">4</div>
+
+      <div class="step active-step">
+        1
+      </div>
+
+      <div class="step">
+        2
+      </div>
+
+      <div class="step">
+        3
+      </div>
+
+      <div class="step">
+        4
+      </div>
+
     </div>
+
+    <!-- Form -->
 
     <form id="multiStepForm">
 
       <!-- STEP 1 -->
+
       <div class="form-step active">
 
-        <h2>Personal Information</h2>
+        <h2>
+          Personal Information
+        </h2>
 
-        <label for="fullName">
-          Full Name
-        </label>
+        <div class="input-group">
 
-        <input
-          type="text"
-          id="fullName"
-          aria-label="Full Name"
-          placeholder="Enter your full name"
-        >
+          <label for="fullName">
+            Full Name
+          </label>
 
-        <label for="dob">
-          Date of Birth
-        </label>
+          <input
+            type="text"
+            id="fullName"
+            aria-label="Full Name"
+            placeholder="Enter your full name"
+          >
 
-        <input
-          type="date"
-          id="dob"
-          aria-label="Date of Birth"
-        >
+          <small
+            class="error"
+            id="nameError"
+          ></small>
 
-        <label for="gender">
-          Gender
-        </label>
+        </div>
 
-        <select
-          id="gender"
-          aria-label="Gender"
-        >
-          <option value="">Select Gender</option>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Other</option>
-        </select>
+        <div class="input-group">
+
+          <label for="dob">
+            Date of Birth
+          </label>
+
+          <input
+            type="date"
+            id="dob"
+            aria-label="Date of Birth"
+          >
+
+          <small
+            class="error"
+            id="dobError"
+          ></small>
+
+        </div>
+
+        <div class="input-group">
+
+          <label for="gender">
+            Gender
+          </label>
+
+          <select
+            id="gender"
+            aria-label="Gender"
+          >
+            <option value="">
+              Select Gender
+            </option>
+
+            <option>
+              Male
+            </option>
+
+            <option>
+              Female
+            </option>
+
+            <option>
+              Other
+            </option>
+
+          </select>
+
+          <small
+            class="error"
+            id="genderError"
+          ></small>
+
+        </div>
 
         <button
           type="button"
           class="next-btn"
         >
-          Next
+          Next →
         </button>
 
       </div>
 
       <!-- STEP 2 -->
+
       <div class="form-step">
 
-        <h2>Contact & Team Details</h2>
+        <h2>
+          Contact & Team Details
+        </h2>
 
-        <label for="email">
-          Email Address
-        </label>
+        <div class="input-group">
 
-        <input
-          type="email"
-          id="email"
-          aria-label="Email Address"
-          placeholder="Enter email"
-        >
+          <label for="email">
+            Email Address
+          </label>
 
-        <label for="phone">
-          Phone Number
-        </label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+          >
 
-        <input
-          type="text"
-          id="phone"
-          aria-label="Phone Number"
-          placeholder="Enter phone number"
-        >
+          <small
+            class="error"
+            id="emailError"
+          ></small>
 
-        <label for="teamName">
-          Team Name
-        </label>
+        </div>
 
-        <input
-          type="text"
-          id="teamName"
-          aria-label="Team Name"
-          placeholder="Enter team name"
-        >
+        <div class="input-group">
 
-        <label for="teamSize">
-          Team Size
-        </label>
+          <label for="phone">
+            Phone Number
+          </label>
 
-        <select
-          id="teamSize"
-          aria-label="Team Size"
-        >
-          <option value="">Select Team Size</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+          <input
+            type="text"
+            id="phone"
+            placeholder="10-digit phone number"
+          >
 
-        <label for="role">
-          Role in Team
-        </label>
+          <small
+            class="error"
+            id="phoneError"
+          ></small>
 
-        <select
-          id="role"
-          aria-label="Role in Team"
-        >
-          <option value="">Select Role</option>
-          <option>Developer</option>
-          <option>Designer</option>
-          <option>Tester</option>
-          <option>Team Lead</option>
-        </select>
+        </div>
+
+        <div class="input-group">
+
+          <label for="teamName">
+            Team Name
+          </label>
+
+          <input
+            type="text"
+            id="teamName"
+            placeholder="Enter team name"
+          >
+
+        </div>
+
+        <div class="input-group">
+
+          <label for="teamSize">
+            Team Size
+          </label>
+
+          <select id="teamSize">
+
+            <option value="">
+              Select Team Size
+            </option>
+
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+
+          </select>
+
+        </div>
+
+        <div class="input-group">
+
+          <label for="role">
+            Role in Team
+          </label>
+
+          <select id="role">
+
+            <option value="">
+              Select Role
+            </option>
+
+            <option>
+              Developer
+            </option>
+
+            <option>
+              Designer
+            </option>
+
+            <option>
+              Tester
+            </option>
+
+            <option>
+              Team Lead
+            </option>
+
+          </select>
+
+        </div>
 
         <div class="buttons">
 
@@ -152,14 +292,14 @@
             type="button"
             class="prev-btn"
           >
-            Previous
+            ← Previous
           </button>
 
           <button
             type="button"
             class="next-btn"
           >
-            Next
+            Next →
           </button>
 
         </div>
@@ -167,57 +307,78 @@
       </div>
 
       <!-- STEP 3 -->
+
       <div class="form-step">
 
-        <h2>Hackathon Preferences</h2>
+        <h2>
+          Hackathon Preferences
+        </h2>
 
-        <label for="track">
-          Track Preference
-        </label>
+        <div class="input-group">
 
-        <select
-          id="track"
-          aria-label="Track Preference"
-        >
-          <option value="">Select Track</option>
-          <option>AI</option>
-          <option>Web</option>
-          <option>IoT</option>
-          <option>Open</option>
-        </select>
+          <label for="track">
+            Track Preference
+          </label>
 
-        <label for="shirt">
-          T-Shirt Size
-        </label>
+          <select id="track">
 
-        <select
-          id="shirt"
-          aria-label="T-Shirt Size"
-        >
-          <option value="">Select Size</option>
-          <option>S</option>
-          <option>M</option>
-          <option>L</option>
-          <option>XL</option>
-        </select>
+            <option value="">
+              Select Track
+            </option>
 
-        <label for="diet">
-          Dietary Restrictions
-        </label>
+            <option>AI</option>
+            <option>Web</option>
+            <option>IoT</option>
+            <option>Open</option>
 
-        <textarea
-          id="diet"
-          aria-label="Dietary Restrictions"
-        ></textarea>
+          </select>
 
-        <label for="notes">
-          Additional Notes
-        </label>
+        </div>
 
-        <textarea
-          id="notes"
-          aria-label="Additional Notes"
-        ></textarea>
+        <div class="input-group">
+
+          <label for="shirt">
+            T-Shirt Size
+          </label>
+
+          <select id="shirt">
+
+            <option value="">
+              Select Size
+            </option>
+
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+
+          </select>
+
+        </div>
+
+        <div class="input-group">
+
+          <label for="diet">
+            Dietary Restrictions
+          </label>
+
+          <textarea
+            id="diet"
+          ></textarea>
+
+        </div>
+
+        <div class="input-group">
+
+          <label for="notes">
+            Additional Notes
+          </label>
+
+          <textarea
+            id="notes"
+          ></textarea>
+
+        </div>
 
         <div class="buttons">
 
@@ -225,14 +386,14 @@
             type="button"
             class="prev-btn"
           >
-            Previous
+            ← Previous
           </button>
 
           <button
             type="button"
             class="next-btn"
           >
-            Next
+            Next →
           </button>
 
         </div>
@@ -243,7 +404,9 @@
 
       <div class="form-step">
 
-        <h2>Review & Submit</h2>
+        <h2>
+          Review & Submit
+        </h2>
 
         <div id="summary"></div>
 
@@ -253,11 +416,14 @@
             type="button"
             class="prev-btn"
           >
-            Previous
+            ← Previous
           </button>
 
-          <button type="submit">
-            Submit
+          <button
+            type="submit"
+            class="submit-btn"
+          >
+            Submit Registration 🚀
           </button>
 
         </div>
@@ -265,6 +431,31 @@
       </div>
 
     </form>
+
+  </div>
+
+  <!-- Success Modal -->
+
+  <div
+    class="success-modal"
+    id="successModal"
+  >
+
+    <div class="modal-content">
+
+      <h2>
+        🎉 Registration Successful!
+      </h2>
+
+      <p>
+        Thank you for registering.
+      </p>
+
+      <button id="closeModal">
+        Close
+      </button>
+
+    </div>
 
   </div>
 
