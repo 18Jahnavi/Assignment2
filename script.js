@@ -62,8 +62,8 @@ function updateProgress(){
 
   const percentage =
   Math.round(
-    ((currentStep + 1) /
-    formSteps.length) * 100
+    (currentStep /
+    (formSteps.length - 1)) * 100
   );
 
   progressBar.style.width =
@@ -71,9 +71,7 @@ function updateProgress(){
 
   progressPercent.textContent =
   `${percentage}% Completed`;
-
 }
-
 /* --------------------
    STEP INDICATOR
 -------------------- */
