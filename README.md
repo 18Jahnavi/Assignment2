@@ -1,63 +1,90 @@
-# Hackathon Registration Form
+# 🚀 Hackathon Registration Form
 
 ## Project Overview
 
 This project is a responsive multi-step Hackathon Registration Form built using HTML, CSS, and JavaScript.
 
-The form allows users to register for a hackathon through multiple steps, validates user input, displays progress, and shows a summary before final submission.
+The form guides users through multiple registration steps, validates inputs, displays progress, provides a summary before submission, and stores form data locally.
 
 ---
 
 ## Features
 
-### Multi-Step Form
+### 1. Multi-Step Registration Form
 
-The registration process is divided into multiple steps:
+The registration process is divided into four steps:
 
-1. Personal Information
-2. Contact & Team Details
-3. Hackathon Preferences
-4. Summary & Submission
-
----
-
-### Progress Indicator
-
-* Progress bar updates automatically.
-* Step indicator highlights the current step.
+* Step 1: Personal Information
+* Step 2: Contact & Team Details
+* Step 3: Hackathon Preferences
+* Step 4: Review & Submit
 
 ---
 
-### Form Validation
+### 2. Progress Indicator
+
+The application includes:
+
+* Progress Bar
+* Progress Percentage
+* Step Indicator (1 → 2 → 3 → 4)
+
+Progress updates automatically as users move through the form.
+
+Example:
+
+* Step 1 → 0%
+* Step 2 → 33%
+* Step 3 → 67%
+* Step 4 → 100%
+
+---
+
+### 3. Form Validation
 
 Validation is implemented for:
 
-* Required fields
-* Email format
-* Phone number format
+#### Personal Information
 
-Users cannot move to the next step until the required information is entered correctly.
+* Full Name required
+* Only alphabets and spaces allowed
+* Numbers and special characters are not allowed
+* Date of Birth required
+* Gender selection required
+
+#### Contact Details
+
+* Valid Email Address required
+* Phone Number required
+* Phone Number must contain exactly 10 digits
+
+Users cannot proceed until validation passes.
 
 ---
 
-### Navigation
+### 4. Navigation
 
-The form includes:
+The form provides:
 
-* Next button
-* Previous button
+* Next Button
+* Previous Button
 
 Users can move between steps and edit information before final submission.
 
 ---
 
-### Summary Page
+### 5. Summary Page
 
-Before submission, users can review all entered details on a summary page.
+Before submission, users can review all entered details including:
+
+* Personal Information
+* Contact Details
+* Team Information
+* Preferences
 
 ---
 
-### Responsive Design
+### 6. Responsive Design
 
 The website is fully responsive and works on:
 
@@ -67,11 +94,46 @@ The website is fully responsive and works on:
 
 ---
 
-### Bonus Features
+### 7. Attractive User Interface
 
-* Smooth step transition animations
-* Local Storage support
-* Accessibility labels (ARIA attributes)
+The project includes:
+
+* Modern Glassmorphism Design
+* Gradient Background
+* Floating Background Effects
+* Animated Step Transitions
+* Interactive Buttons
+* Modern Typography
+
+---
+
+## Bonus Features Implemented
+
+### Local Storage
+
+Form data is automatically saved in Local Storage.
+
+If the page is refreshed, user data remains available.
+
+---
+
+### Accessibility
+
+The form includes:
+
+* Labels for all form fields
+* ARIA-friendly structure
+* Keyboard-accessible form controls
+
+---
+
+### Animations
+
+The project includes:
+
+* Smooth Page Transitions
+* Hover Effects
+* Step Animation Effects
 
 ---
 
@@ -85,7 +147,7 @@ The website is fully responsive and works on:
 
 ## Project Structure
 
-project-folder/
+Assignment2/
 
 ├── index.html
 
@@ -101,7 +163,7 @@ project-folder/
 
 ### Step 1
 
-Download or clone the project.
+Download or clone the repository.
 
 ### Step 2
 
@@ -109,7 +171,7 @@ Open the project folder.
 
 ### Step 3
 
-Make sure the following files are present:
+Ensure the following files are available:
 
 * index.html
 * style.css
@@ -123,54 +185,78 @@ Open index.html in any web browser.
 
 ## Validation Rules
 
-### Step 1
+### Full Name
 
-Required:
+Allowed:
 
-* Full Name
-* Date of Birth
-* Gender
+* Jahnavi
+* Jahnavi Vijjana
+* Sai Kiran
 
-### Step 2
+Not Allowed:
 
-Required:
+* 1234
+* John123
+* Sai@123
 
-* Email Address
-* Phone Number
-* Team Name
+### Email
 
-Validation:
+Must follow a valid email format.
 
-* Valid Email Format
-* 10-digit Phone Number
+Example:
 
-### Step 3
+* [example@gmail.com](mailto:example@gmail.com)
 
-Required:
+### Phone Number
 
-* Track Preference
-* T-Shirt Size
+Must contain exactly 10 digits.
 
----
+Example:
 
-## Local Storage
-
-Form data is automatically saved in Local Storage.
-
-If the page is refreshed, previously entered information remains available.
+* 9876543210
 
 ---
 
-## Submission
+## Submission Process
 
-After successful validation and submission:
+After successful submission:
 
-* Success message is displayed.
-* Stored form data is cleared.
-* Form resets to the first step.
+* Success popup is displayed
+* Local Storage data is cleared
+* Form resets to Step 1
+
+---
+
+## Assignment Requirements Covered
+
+✅ Multi-Step Form
+
+✅ Personal Information Step
+
+✅ Contact & Team Details Step
+
+✅ Hackathon Preferences Step
+
+✅ Progress Indicator
+
+✅ Form Validation
+
+✅ Previous / Next Navigation
+
+✅ Summary Page
+
+✅ Responsive Design
+
+✅ Submission Confirmation
+
+✅ Local Storage (Bonus)
+
+✅ Accessibility Features (Bonus)
+
+✅ Animations (Bonus)
 
 ---
 
 ## Author
 
-Created as part of the Hackathon Registration Form Assignment.
+Created as part of the Hackathon Participant Registration Form Assignment.
